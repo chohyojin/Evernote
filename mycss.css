@@ -271,3 +271,84 @@ footer {
 	margin-left : auto;
 	margin-right : auto;
 }
+.striped > tbody tr:nth-child(2n+1) {
+	background-color : #eeeeee;
+}
+
+.topAD {
+	background-color: white;
+	height : 85px;
+	border-bottom : 1px solid #dddddd;
+	padding : 0 24px;
+	position : fixed;
+	top : 0;
+	left : 0;
+	right : 0;
+
+}
+
+.topAD p {
+	color : #999999;
+	font-size : 1em;
+	line-height : 85px;
+}
+
+.topAD p a {
+	color : #31a8f0;
+}
+
+a.gotit {
+	display : inline-block;
+	height : 36px;
+	width : 95px;
+	background-color: #f1d600;
+	border-radius : 5px;
+	text-align : center;
+	line-height : 36px;
+
+	position : absolute;
+	top : calc(50% - 18px);
+
+	right : 24px;
+}
+.page {
+	margin-top : 85px;
+}
+.middleAD {
+	background-color : red;
+	position : absolute;
+	width : 200px;
+	height : 200px;
+	top : calc(50% - 150px);
+	width : calc(50%- 100px);
+
+}
+.backgroundAD {
+	position : fixed;
+	top : 0;
+	bottom : 0;
+	left : 0;
+	right : 0;
+	background color : rgba(0,0,255,0,3);
+	z-index : 1000;
+
+}
+input[type="radio"] {
+	display : none;
+}
+input[type="radio"] + label:before {
+	content : "";
+	width : 20px;
+	height : 20px;
+	display : inline-block;
+	margin-right : 8px;
+	background-color : white;
+	border : 1px solid black;
+	box-sizing: border-box;
+	vertical-align:middle;
+}
+
+input[type="radio"]:checked + label:before {
+	background-color: green;
+}
+
