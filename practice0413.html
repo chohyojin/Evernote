@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8"><title>BOM Practice</title>
+
+	</head>
+	<body onload="myResize();" onresize = "myResize();">
+
+		<script>
+		(function() {
+					alert("hi hyojin");
+					var confirmAns = confirm("yes/no 골라");
+					if(confirmAns) {
+						alert("yes");
+					}
+					else {
+						alert("no");
+					}
+
+					do {
+						var name = "";
+						name = prompt("write your name");
+
+					}while(name == null || name.length == 0);
+
+					document.body.innerHTML = "your name \"" + name + "\" .";
+				})();
+			function myResize() {
+				var doc = window.document.body;
+
+				doc.innerHTML = "";
+				doc.innerHTML  += "window.innerWidth : "+ window.innerWidth + "<br/>";
+				doc.innerHTML  += "window.innerHeight : "+ window.innerHeight + "<br/>";
+
+
+
+				doc.innerHTML  += "screen.width : "+ screen.width + "<br/>";
+				doc.innerHTML  += "screen.height : "+ screen.height + "<br/>";
+				doc.innerHTML  += "screen.availWidth : "+ screen.availWidth + "<br/>";
+				doc.innerHTML  += "screen.availHeight : "+ screen.availHeight + "<br/>";
+				doc.innerHTML  += "screen.colorDepth : "+ screen.colorDepth + "<br/>";
+				doc.innerHTML  += "screen.pixelDepth : "+ screen.pixelDepth + "<br/>";
+
+				doc.innerHTML += "location.href : " + location.href + "<br/>";
+				doc.innerHTML += "location.hostname : " + location.hostname + "<br/>";
+				doc.innerHTML += "location.pathname : " + location.pathname + "<br/>";
+				doc.innerHTML += "location.protocol : " + location.protocol + "<br/>";
+			
+				doc.innerHTML += "cookieEnabled : " + navigator.cookieEnabled + "<br/>";
+
+				doc.innerHTML += "appName : " + navigator.appName + "<br/>";
+				doc.innerHTML += "appCodeName : " + navigator.appCodeName + "<br/>";
+				doc.innerHTML += "product : " + navigator.product + "<br/>";
+				doc.innerHTML += "appVersion : " + navigator.appVersion + "<br/>";
+
+				doc.innerHTML += "userAgent : " + navigator.userAgent + "<br/>";
+
+				doc.innerHTML += "platform : " + navigator.platform + "<br/>";
+				doc.innerHTML += "language : " + navigator.language + "<br/>";
+
+				doc.innerHTML += "onLine : " + navigator.onLine + "<br/>";
+
+
+				(function() {
+					alert("hi hyojin");
+					var confirmAns = confirm("yes/no 골라");
+					if(confirmAns) {
+						alert("yes");
+					}
+					else {
+						alert("no");
+					}
+
+					do {
+						var name = "";
+						name = prompt("write your name");
+
+					}while(name == null || name.length == 0);
+
+					document.body.innerHTML = "your name \"" + name + "\" .";
+				})();
+
+
+			}
+		</script>
+	</body>
+</html>
+
