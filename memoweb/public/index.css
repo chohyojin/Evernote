@@ -1,0 +1,49 @@
+.header {
+	text-align : center;
+	background-image:url("/Goeun.PNG");
+	background-size: all;
+	height:550px;
+	width:100%;
+	padding:0; 
+	margin:0;
+	border-bottom : 1px solid black;
+	background-color : purple;
+
+}
+
+.h1 {
+	font-color : blue;
+	font-size : 25px;
+}
+* {
+	font-family : 'Pangolin', cursive;
+	
+	background-size:all;
+}
+
+.col.s3 {
+	padding:0; 
+	margin:0;
+	overflow-y:auto;
+	overflow-x:hidden;
+	height:1080px;
+   -ms-overflow-style: none;
+	
+}
+
+.collection {
+	cursor: pointer;
+	padding:0; 
+	margin:0;
+	
+	 ::-webkit-scrollbar{}
+}
+.collection2 {
+	padding:0;
+	margin:0;
+	height : 1080px;
+}
+.button {
+	float : right;
+	width : 100%;
+}
