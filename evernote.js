@@ -143,12 +143,12 @@ function hashtagSplit(data){
 
 
 //tag 떼기
-  tag_split.forEach(function(i){
-    i = i.replace(/(<([^>]+)>)/ig,"");
+  tag_split.forEach(function(a){
+    a = a.replace(/(<([^>]+)>)/ig,"");
 //var regex_hash = /(#[A-Za-z가-힉-하-_-][A-Za-z가-힣-하-0-9]*/g);
-     tp = i.split(' ');
-    tp.forEach(function(j){
-      erase.push(j);
+     tp = a.split(' ');
+    tp.forEach(function(b){
+      erase.push(b);
     });
   });
 
@@ -159,11 +159,11 @@ function hashtagSplit(data){
 
 var data_split = new Array();
 //\n 뗴기
-  erase.forEach(function(i){
-    tp = i.split('\n');
+  erase.forEach(function(t){
+    tp = t.split('\n');
     
-    tp.forEach(function(j){
-      data_split.push(j);
+    tp.forEach(function(beta){
+      data_split.push(beta);
     });
   });
 
@@ -396,18 +396,18 @@ $("#List_memo").scroll(
 function printList_memo(data, hash){
   $("#List_memo").html(null);
   var i = 1;
-  var diaryDate = null;
-  var hashString = null;
+  var evernoteDate = null;
+  var data_hash = null;
   if(data == null){
     return;
   }
   if(hash == null){
-    for(var temp in data){
+    for(var tp in data){
       if(i > count){
         break;
       }
-      diaryDate = new Date(-data[temp].date);
-      hashString = "";
+      evernoteDate = new Date(-data[tp].date);
+      data_hash = "";
       /*
         if (selectedKey) {
             memoRef = database.ref('memos/' + userInfo.uid + "/" + selectedKey);
@@ -427,9 +427,9 @@ function printList_memo(data, hash){
 */
 
 
-      if(data[temp].hash != null){
-        data[temp].hash.forEach(function(i){
-          hashString += i + " ";
+      if(data[tp].hash != null){
+        data[tp].hash.forEach(function(i){
+          data_hash += i + " ";
         }); 
       }
       /*
@@ -442,12 +442,12 @@ function printList_memo(data, hash){
                     "</li>";
                     */
 
-      $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + "<small>&nbsp;&nbsp;&nbsp;" + hashString + "&nbsp;&nbsp;" + diaryDate.toLocaleString() + "</small></h3></a></li>");  
+      $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + tp + '&quot;);"><h3>' + data[tp].title + "&nbsp;&nbsp;&nbsp;" + data_hash + "&nbsp;&nbsp;" + evernoteDate.toLocaleString() + "</h3></a></li>");  
       i++;
     }
   }
   else {
-  for(var temp in data){
+  for(var tp in data){
       if(i > count){
         break;
       }
@@ -469,15 +469,15 @@ function printList_memo(data, hash){
           }
         }
 */
-      if(data[temp].hash != null){
-        data[temp].hash.forEach(function(i){
+      if(data[tp].hash != null){
+        data[tp].hash.forEach(function(i){
           if(i == hash){
-            hashString = "";
-            data[temp].hash.forEach(function(i){
-              hashString += i + " ";
+            data_hash = "";
+            data[tp].hash.forEach(function(i){
+              data_hash += i + " ";
             }); 
 
-            diaryDate = new Date(-data[temp].date);
+            evernoteDate = new Date(-data[tp].date);
 
             /*
        var html = "<li id='" + key + "' class=\"collection-item avatar\" onclick=\"fn_get_data_one(this.id);\">" +
@@ -488,7 +488,7 @@ function printList_memo(data, hash){
                     "<a href=\"#!\" onclick=\"fn_delete_data('" + key +"')\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a>"
                     "</li>";
                     */
-            $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + "<small>&nbsp;&nbsp;&nbsp;" + hashString + "&nbsp;&nbsp;" + diaryDate.toLocaleString() + "</small></h3></a></li>");  
+            $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + tp + '&quot;);"><h3>' + data[tp].title + "&nbsp;&nbsp;" + data_hash + "&nbsp;&nbsp;" + evernoteDate.toLocaleString() + "</h3></a></li>");  
             i++;
             return;
           }
@@ -502,11 +502,11 @@ function printList_memo(data, hash){
 
 
   /*
-  for(var temp in data){
+  for(var tp in data){
     if(i > count){
       break;
     }
-    $("#List_memo").prepend('<li class="list-group-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + data[temp].hashtag +"<small>&nbsp;&nbsp;&nbsp;" + data[temp].date + "</small></h3></a></li>"); 
+    $("#List_memo").prepend('<li class="list-group-item"><a onClick="loadDiary(&quot;' + tp + '&quot;);"><h3>' + data[tp].title + data[tp].hashtag +"<small>&nbsp;&nbsp;&nbsp;" + data[tp].date + "</small></h3></a></li>"); 
     i++;
   }
   */
