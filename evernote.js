@@ -146,7 +146,7 @@ function hashtagSplit(data){
   tag_split.forEach(function(i){
     i = i.replace(/(<([^>]+)>)/ig,"");
 //var regex_hash = /(#[A-Za-z가-힉-하-_-][A-Za-z가-힣-하-0-9]*/g);
-   
+     tp = i.split(' ');
     tp.forEach(function(j){
       erase.push(j);
     });
@@ -386,92 +386,46 @@ $("#List_memo").scroll(
 function printList_memo(data, hash){
   $("#List_memo").html(null);
   var i = 1;
-  var Dates = null;
-  var hashT = null;
+  var diaryDate = null;
+  var hashString = null;
   if(data == null){
     return;
   }
-
-  /* dbs.on('child_added', function(data) {
-  var a = data.val();
-  
-  
-    $("#List_memo").prepend('<li class="list-group-item"><a onClick="loadDiary(&quot;' + data.key + '&quot;);"><h4>' + a.title + "<small>&nbsp;&nbsp;&nbsp;" + a.date + "</small></h4></a></li>");  
-  
-});
-
-*/
   if(hash == null){
-    for(var tp in data){
+    for(var temp in data){
       if(i > count){
         break;
       }
-      Dates = new Date(-data[tp].date);
-      hashT = "";
-      
-/*
-       var hashtag = new Array();
-  data.forEach(function(word){
-    if(word.indexof('#') == 0){
-      hashtag.push(word);
-*/
+      diaryDate = new Date(-data[temp].date);
+      hashString = "";
+     
 
-
-
-      if(data[tp].hash != null){
-        data[tp].hash.forEach(function(i){
-          hashT += i + " ";
+      if(data[temp].hash != null){
+        data[temp].hash.forEach(function(i){
+          hashString += i + " ";
         }); 
       }
       
 
-      $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + tp + '&quot;);"><h3>' + data[tp].title + "&nbsp;&nbsp;" + hashT + "&nbsp;&nbsp;" + Dates.toLocaleString() + "</small></h3></a></li>");  
+      $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + "<small>&nbsp;&nbsp;&nbsp;" + hashString + "&nbsp;&nbsp;" + diaryDate.toLocaleString() + "</small></h3></a></li>");  
       i++;
     }
   }
-/*
- var html = "<li id='" + key + "' class=\"collection-item avatar\" onclick=\"fn_get_data_one(this.id);\">" +
-                    "<i class=\"material-icons circle purple\">" + firstTxt + "</i>" +
-                    "<span class=\"txt_createDate\">" + updateDate + "</span>" +
-                    "<p class='title'>" + title + "<br>" + "</p>" + "<p class='txt'>" + txt + "<br>" +
-                    "</p>" + 
-                    "<a href=\"#!\" onclick=\"fn_delete_data('" + key +"')\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a>"
-                    "</li>";
-
-*/
-
-
   else {
-  for(var tp in data){
+  for(var temp in data){
       if(i > count){
         break;
       }
-
-      /* dbs.on('child_added', function(data) {
-  var a = data.val();
-  
-  
-    $("#List_memo").prepend('<li class="list-group-item"><a onClick="loadDiary(&quot;' + data.key + '&quot;);"><h4>' + a.title + "<small>&nbsp;&nbsp;&nbsp;" + a.date + "</small></h4></a></li>");  
-  
-});
-
-*/
-      if(data[tp].hash != null){
-        data[tp].hash.forEach(function(i){
+      if(data[temp].hash != null){
+        data[temp].hash.forEach(function(i){
           if(i == hash){
-            hashT = "";
-            data[tp].hash.forEach(function(i){
-              hashT += i + " ";
+            hashString = "";
+            data[temp].hash.forEach(function(i){
+              hashString += i + " ";
             }); 
 
-/*
-       var hashtag = new Array();
-  data.forEach(function(word){
-    if(word.indexof('#') == 0){
-      hashtag.push(word);
-*/
-            Dates = new Date(-data[tp].date);
-            $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + tp + '&quot;);"><h3>' + data[tp].title + "&nbsp;&nbsp;" + hashT + "&nbsp;&nbsp;" + Dates.toLocaleString() + "</small></h3></a></li>");  
+            diaryDate = new Date(-data[temp].date);
+            $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + "<small>&nbsp;&nbsp;&nbsp;" + hashString + "&nbsp;&nbsp;" + diaryDate.toLocaleString() + "</small></h3></a></li>");  
             i++;
             return;
           }
@@ -485,11 +439,11 @@ function printList_memo(data, hash){
 
 
   /*
-  for(var tp in data){
+  for(var temp in data){
     if(i > count){
       break;
     }
-    $("#List_memo").prepend('<li class="list-group-item"><a onClick="loadDiary(&quot;' + tp + '&quot;);"><h3>' + data[tp].title + data[tp].hashtag +"<small>&nbsp;&nbsp;&nbsp;" + data[tp].date + "</small></h3></a></li>"); 
+    $("#List_memo").prepend('<li class="list-group-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + data[temp].hashtag +"<small>&nbsp;&nbsp;&nbsp;" + data[temp].date + "</small></h3></a></li>"); 
     i++;
   }
   */
