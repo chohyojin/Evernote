@@ -167,6 +167,16 @@ var data_split = new Array();
     });
   });
 
+/*
+function hashtagconfirm(data){
+  var hashtag = new Array();
+  data.forEach(function(word){
+    if(word.indexof('#') == 0){
+      hashtag.push(word);
+    }
+  });
+  return hashtag;
+*/
   data_split.forEach(function(word){
     if(word.indexOf('#') == 0){
       hash.push(word);
@@ -398,14 +408,39 @@ function printList_memo(data, hash){
       }
       diaryDate = new Date(-data[temp].date);
       hashString = "";
-     
+      /*
+        if (selectedKey) {
+            memoRef = database.ref('memos/' + userInfo.uid + "/" + selectedKey);
+            memoRef.update({
+              txt: txt,
+              updateDate: new Date().getTime()
+            });
+          }else {
+            //push
+            memoRef.push({
+              txt: txt,
+              createDate: new Date().getTime(),
+              updateDate: new Date().getTime()
+            });  
+          }
+        }
+*/
+
 
       if(data[temp].hash != null){
         data[temp].hash.forEach(function(i){
           hashString += i + " ";
         }); 
       }
-      
+      /*
+       var html = "<li id='" + key + "' class=\"collection-item avatar\" onclick=\"fn_get_data_one(this.id);\">" +
+                    "<i class=\"material-icons circle purple\">" + firstTxt + "</i>" +
+                    "<span class=\"txt_createDate\">" + updateDate + "</span>" +
+                    "<p class='title'>" + title + "<br>" + "</p>" + "<p class='txt'>" + txt + "<br>" +
+                    "</p>" + 
+                    "<a href=\"#!\" onclick=\"fn_delete_data('" + key +"')\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a>"
+                    "</li>";
+                    */
 
       $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + "<small>&nbsp;&nbsp;&nbsp;" + hashString + "&nbsp;&nbsp;" + diaryDate.toLocaleString() + "</small></h3></a></li>");  
       i++;
@@ -416,6 +451,24 @@ function printList_memo(data, hash){
       if(i > count){
         break;
       }
+
+      /*
+        if (selectedKey) {
+            memoRef = database.ref('memos/' + userInfo.uid + "/" + selectedKey);
+            memoRef.update({
+              txt: txt,
+              updateDate: new Date().getTime()
+            });
+          }else {
+            //push
+            memoRef.push({
+              txt: txt,
+              createDate: new Date().getTime(),
+              updateDate: new Date().getTime()
+            });  
+          }
+        }
+*/
       if(data[temp].hash != null){
         data[temp].hash.forEach(function(i){
           if(i == hash){
@@ -425,6 +478,16 @@ function printList_memo(data, hash){
             }); 
 
             diaryDate = new Date(-data[temp].date);
+
+            /*
+       var html = "<li id='" + key + "' class=\"collection-item avatar\" onclick=\"fn_get_data_one(this.id);\">" +
+                    "<i class=\"material-icons circle purple\">" + firstTxt + "</i>" +
+                    "<span class=\"txt_createDate\">" + updateDate + "</span>" +
+                    "<p class='title'>" + title + "<br>" + "</p>" + "<p class='txt'>" + txt + "<br>" +
+                    "</p>" + 
+                    "<a href=\"#!\" onclick=\"fn_delete_data('" + key +"')\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a>"
+                    "</li>";
+                    */
             $("#List_memo").prepend('<li class="collection-item"><a onClick="loadDiary(&quot;' + temp + '&quot;);"><h3>' + data[temp].title + "<small>&nbsp;&nbsp;&nbsp;" + hashString + "&nbsp;&nbsp;" + diaryDate.toLocaleString() + "</small></h3></a></li>");  
             i++;
             return;
@@ -469,7 +532,7 @@ function loadDiary(key){
     $("#title").val(data.title);
     CKEDITOR.instances.editor.setData(data.content);
     nowkey = key;
-
+    //storage 접근하여 img파일 ㅇ 가져오기
     firebase.storage().ref().child('img/'+nowkey+'/'+data.img).getDownloadUrl().then(function(url){
       var x = new XMLHttpRequest();
       x.responseType = 'blob';
